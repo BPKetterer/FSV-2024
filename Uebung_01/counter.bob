@@ -3,4 +3,8 @@ obj COUNTER is
   op reset : -> Counter .
   op inc : Counter -> Counter .
   op dec : Counter -> Counter .
+
+  var C : Counter .
+  eq dec(inc(C)) = C .
+  eq inc(dec(C)) = C .
 endo
