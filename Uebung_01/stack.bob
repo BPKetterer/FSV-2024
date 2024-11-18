@@ -1,0 +1,22 @@
+obj STACK-OF-NAT is
+    sorts Stack NeStack topless underflow .
+    protecting NAT .
+    subsort NeStack < Stack .
+    subsort underflow < Stack .
+    subsort topless < Nat .
+
+    op empty : -> Stack .
+    op push : Nat Stack -> NeStack .
+    op top : NeStack -> Nat .
+    op pop : NeStack -> Stack .
+
+    var X : Nat .
+    var S : Stack .
+    var TL : topless .
+    var UF : underflow .
+    
+    eq pop(empty) = UF .
+    eq top(empty) = TL .
+    eq top(push(X,S)) = X .
+    eq pop(push(X,S)) = S .
+endo
