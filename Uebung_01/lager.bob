@@ -1,0 +1,26 @@
+obj LadungBeschreibung is
+    sorts LadungBeschreibung .
+endo
+
+obj Ladungstraeger is
+    sorts Ladungstraeger .
+endo
+
+obj Fach is
+    sorts Fach LeeresFach .
+endo
+
+obj Lager is
+    sorts Lager .
+    protecting NAT .
+    protecting Ladungstraeger .
+
+    op leersLager : -> Lager .
+    op einlagern : Lager Nat Nat Nat Ladungstraeger -> Lager . 
+    op auslagern : Lager Nat Nat Nat -> Lager .
+
+    var lager : Lager . 
+    vars gang regal ebene : Nat .
+    var ladungstraeger : Ladungstraeger .
+    eq auslagern(einlagern(lager, gang, regal, ebene, ladungstraeger), gang, regal, ebene) = lager .
+endo
